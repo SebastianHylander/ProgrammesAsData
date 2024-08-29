@@ -132,4 +132,13 @@ let rec simplify (aexpr : aexpr) =
         match a1, a2 with
         | CstI 0, a -> CstI 0
         | a, CstI 0 -> CstI 0
+        | CstI 1, a -> a 
+        | a, CstI 1 -> a
+    | Sub(e1, e2) -> 
+        let a1 = simplify e1 
+        let a2 = simplify a2 
+        match a1, a2 with
+        | CstI 0, a -> a
+        | a, CstI 0 -> a 
+        | a, a -> 0 
     
