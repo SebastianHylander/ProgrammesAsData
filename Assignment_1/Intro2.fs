@@ -26,6 +26,7 @@ type expr =
   | Prim of string * expr * expr
   | If of expr * expr * expr;;
 
+
 let e1 = CstI 17;;
 
 let e2 = Prim("+", CstI 3, Var "a");;
@@ -95,3 +96,15 @@ let e7v = eval e7 env;;
 let e8v = eval e8 env;;
 let e9v = eval e9 env;;
 let e10v = eval e10 env;;
+
+
+type aexp = 
+  | CstI of int
+  | Var of string
+  | Add of aexp * aexp
+  | Mul of aexp * aexp
+  | Sub of aexp * aexp
+ 
+(* Sub(Var "v", Add(Var "w", Var "z")*)
+(* Mul(CstI 2, Sub(Var "v", Add(Var "w", Var "z")))*)
+(*Add ()*)
