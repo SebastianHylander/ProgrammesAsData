@@ -1,0 +1,71 @@
+# Ignore .NET build results
+bin/
+obj/
+out/
+*.dll
+*.exe
+*.log
+*.nuget
+
+# Ignore Visual Studio specific files
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.userprefs
+
+# Ignore Rider specific files
+.idea/
+*.sln.iml
+
+# Ignore OS-specific files
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+# Temporary files
+*.tmp
+*.temp
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+
+# Ignore any build artifacts
+*.build.cs
+
+# Ignore dotnet tool artifacts
+**/.dotnet_tool
+
+# Ignore F# specific files
+*.fsi
+*.fsx
+*.fsproj.user
+
+# Ignore log files
+*.log
+
+# Ignore coverage tool files
+coverage/
+*.coverage
+*.coveragexml
+*.ncrunchproject
+*.ncrunchsolution
+
+# Ignore JetBrains Rider/IDEA IDE specific files
+.idea/
+*.sln.iml
+
+# Ignore files related to npm/yarn
+node_modules/
