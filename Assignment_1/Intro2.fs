@@ -117,3 +117,19 @@ let rec fmt (aexpr : aexpr) : string =
     | Add (a1, a2) -> fmt_binop "+" a1 a2
     | Mul (a1, a2) -> fmt_binop "*" a1 a2
     | Sub (a1, a2) -> fmt_binop "-" a1 a2;;
+
+let rec simplify (aexpr : aexpr) = 
+    match aexpr with 
+    | Add(e1, e2) -> 
+        let a1 = simplify e1 
+        let a2 = simplify a2 
+        match a1, a2 with
+        | CstI 0, a -> a
+        | a, CstI 0 -> a
+    | Mul(e1, e2) ->
+        let a1 = simplify e1
+        let a2 = simplify e2
+        match a1, a2 with
+        | CstI 0, a -> CstI 0
+        | a, CstI 0 -> CstI 0
+    
