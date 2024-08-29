@@ -101,10 +101,19 @@ let e10v = eval e10 env;;
 type aexpr = 
   | CstI of int
   | Var of string
-  | Add of aexp * aexp
-  | Mul of aexp * aexp
-  | Sub of aexp * aexp
+  | Add of aexpr * aexpr
+  | Mul of aexpr * aexpr
+  | Sub of aexpr * aexpr;;
  
 (* Sub(Var "v", Add(Var "w", Var "z")*)
 (* Mul(CstI 2, Sub(Var "v", Add(Var "w", Var "z")))*)
 (*Add (Var "x", Add(Var "y", Add(Var "z", Var "v")))*)
+
+let rec fmt (aexpr : aexpr) : string = 
+    let fmt_binop = fun op a1 a2 -> "(" + fmt a1 + op + fmt a2 + ")"
+    match aexpr with
+    | CstI i -> string i
+    | Var v -> v
+    | Add (a1, a2) -> fmt_binop "+" a1 a2
+    | Mul (a1, a2) -> fmt_binop "*" a1 a2
+    | Sub (a1, a2) -> fmt_binop "-" a1 a2;;
