@@ -98,7 +98,7 @@ let e9v = eval e9 env;;
 let e10v = eval e10 env;;
 
 
-type aexp = 
+type aexpr = 
   | CstI of int
   | Var of string
   | Add of aexp * aexp
@@ -107,4 +107,4 @@ type aexp =
  
 (* Sub(Var "v", Add(Var "w", Var "z")*)
 (* Mul(CstI 2, Sub(Var "v", Add(Var "w", Var "z")))*)
-(*Add ()*)
+(*Add (Var "x", Add(Var "y", Add(Var "z", Var "v")))*)
