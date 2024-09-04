@@ -149,15 +149,14 @@ let rec simplify (aexp : aexpr) : aexpr =
     | _ -> aexp
 
 
-let rec diff aexp (Var x) = 
+let rec diff_rec aexp (Var x) = 
     match aexp with
     | CstI _ -> CstI 0
     | Var n when n = x -> CstI 1
     | Var _  -> CstI 0
-    | Add (a1, a2) -> Add (diff a1 (Var x), diff a2 (Var x))
-    | Sub (a1, a2) -> Sub (diff a1 (Var x), diff a2 (Var x))
-    | Mul (a1, a2) -> Add (Mul (diff a1 (Var x), a2), Mul ((diff a2 (Var x), a1)))
+    | Add (a1, a2) -> Add (diff_rec a1 (Var x), diff_rec a2 (Var x))
+    | Sub (a1, a2) -> Sub (diff_rec a1 (Var x), diff_rec a2 (Var x))
+    | Mul (a1, a2) -> Add (Mul (diff_rec a1 (Var x), a2), Mul ((diff_rec a2 (Var x), a1)));;
 
-
-    
+let diff aexp x = diff_rec aexp x |> simplify;;
     
