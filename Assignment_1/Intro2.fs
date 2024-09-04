@@ -118,27 +118,46 @@ let rec fmt (aexpr : aexpr) : string =
     | Mul (a1, a2) -> fmt_binop "*" a1 a2
     | Sub (a1, a2) -> fmt_binop "-" a1 a2;;
 
-let rec simplify (aexpr : aexpr) = 
-    match aexpr with 
-    | Add(e1, e2) -> 
-        let a1 = simplify e1 
-        let a2 = simplify a2 
-        match a1, a2 with
+let rec simplify (aexp : aexpr) : aexpr =
+    match aexp with
+    | Add (a1, a2) -> 
+        let e1 = simplify a1
+        let e2 = simplify a2
+        match e1, e2 with
         | CstI 0, a -> a
         | a, CstI 0 -> a
-    | Mul(e1, e2) ->
-        let a1 = simplify e1
-        let a2 = simplify e2
-        match a1, a2 with
-        | CstI 0, a -> CstI 0
-        | a, CstI 0 -> CstI 0
-        | CstI 1, a -> a 
+        | _ -> aexp
+
+    | Sub (a1, a2) ->
+        let e1 = simplify a1
+        let e2 = simplify a2
+        match e1, e2 with 
+        | a, CstI 0 -> a
+        | a, b when a = b -> CstI 0
+        | _ -> aexp
+
+    | Mul (a1, a2) ->
+        let e1 = simplify a1
+        let e2 = simplify a2
+        match e1, e2 with
+        | CstI 1, a -> a
         | a, CstI 1 -> a
-    | Sub(e1, e2) -> 
-        let a1 = simplify e1 
-        let a2 = simplify a2 
-        match a1, a2 with
-        | CstI 0, a -> a
-        | a, CstI 0 -> a 
-        | a, a -> 0 
+        | CstI 0, _ -> CstI 0
+        | _, CstI 0 -> CstI 0
+        | _ -> aexp
+
+    | _ -> aexp
+
+
+let rec diff aexp (Var x) = 
+    match aexp with
+    | CstI _ -> CstI 0
+    | Var n when n = x -> CstI 1
+    | Var _  -> CstI 0
+    | Add (a1, a2) -> Add (diff a1 (Var x), diff a2 (Var x))
+    | Sub (a1, a2) -> Sub (diff a1 (Var x), diff a2 (Var x))
+    | Mul (a1, a2) -> Add (Mul (diff a1 (Var x), a2), Mul ((diff a2 (Var x), a1)))
+
+
+    
     
