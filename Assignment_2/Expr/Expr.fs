@@ -341,7 +341,7 @@ let sinstrToInt = function
 
 let assemble instrs = 
     let rec assemble_tail = fun ins acc  ->
-      match instrs with
+      match ins with
         | [] -> acc
         | x :: xs -> sinstrToInt x |> (@) acc |> assemble_tail xs 
     assemble_tail instrs [];;
