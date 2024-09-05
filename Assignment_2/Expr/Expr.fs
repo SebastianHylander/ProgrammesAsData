@@ -281,7 +281,7 @@ let rec seval (inss : sinstr list) stack =
        | SMul,     i2::i1::stkr -> seval rest (i1*i2 :: stkr)
        | SPop,        _ :: stkr -> seval rest stkr
        | SSwap,    i2::i1::stkr -> seval rest (i1::i2::stkr)
-       | _,        _            -> raise (Failure "seval: error")
+       | _,        _            -> raise (Failure "seval: error");;
 
 
 (* To compile for the single-stack machine, we must keep count (at
@@ -328,8 +328,30 @@ let s3 = scomp e3 []
 *)
 
 
+(* Ex 2.4 - assemble to integers *)
+(* SCST = 0, SVAR = 1, SADD = 2, SSUB = 3, SMUL = 4, SPOP = 5, SSWAP = 6; *)
+let sinstrToInt = function
+  | SCstI i -> [0;i]
+  | SVar i  -> [1;i]
+  | SAdd    -> [2]
+  | SSwap   -> [6]
+  | SSub    -> [3]
+  | SMul    -> [4]
+  | SPop    -> [5];;
+
+let assemble instrs = 
+    let rec assemble_tail = fun ins acc  ->
+      match instrs with
+        | [] -> acc
+        | x :: xs -> sinstrToInt x |> (@) acc |> assemble_tail xs 
+    assemble_tail instrs [];;
+  
+
 (* Output the integers in list inss to the text file called fname: *)
 
 let intsToFile (inss : int list) (fname : string) = 
     let text = String.concat " " (List.map string inss)
     System.IO.File.WriteAllText(fname, text);;
+
+
+(* -----------------------------------------------------------------  *)
