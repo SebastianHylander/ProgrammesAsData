@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="/Users/nh/fsharp/FsLexYacc.Runtime.dll" />
+    <!-- Replace with your specific path to FsLexYacc.Runtime.dll -->
+    <Reference Include="../../fsharp/FsLexYacc.Runtime.dll" />
   </ItemGroup>
 </Project>
