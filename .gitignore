@@ -2,7 +2,7 @@
 bin/
 obj/
 out/
-# *.dll
+*.dll
 *.exe
 *.log
 *.nuget
