@@ -1,0 +1,11 @@
+Rule A) Expr EOF -> 
+Rule f) LET z EQ Expr IN Expr END EOF-> 
+Rule G) LET z EQ Expr IN Expr * Expr EOF-> 
+Rule C) LET z EQ Expr IN Expr * 3 EOF->
+Rule H) LET z EQ Expr IN Expr + Expr * 3 EOF->
+Rule C) LET z EQ Expr IN Expr + 2 * 3 EOF ->
+Rule B) LET z EQ Expr IN z + 2 * 3 EOF ->
+Rule E) LET z EQ (Expr) IN z + 2 * 3 EOF ->
+Rule C) LET z EQ (17) IN z + 2 * 3 EOF
+
+
