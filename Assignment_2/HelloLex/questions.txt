@@ -1,0 +1,22 @@
+HelloLex 
+
+Question 1. 
+
+Regular expression: 
+
+['0' - '9'] -> [0-9] the semantic value is all character representations of the numbers 0 to 9.
+
+Every other character is considered illegal and fails with 'Lexer error: illegal symbol'.
+
+
+Question 2. 
+
+hello.fs and hello.fsi are generated during the process. 
+
+There are 3 states. 
+
+
+Question 6.
+
+The first two inputs are valid integer and floating point values respectively . The last input does not count as a floating point, since it uses a ',' instead of a '.' 
+The first part of the input is still parsed since 34 is a valid integer. 
