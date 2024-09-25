@@ -1,0 +1,3 @@
+3.6 : Our solution can be seen in Parse.fs
+
+3.7 : Our solution is spread across the different files necessary
