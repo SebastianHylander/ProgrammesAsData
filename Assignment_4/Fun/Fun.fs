@@ -24,7 +24,7 @@ let rec lookup env x =
 
 type value = 
   | Int of int
-  | Closure of string * string * expr * value env       (* (f, x, fBody, fDeclEnv) *)
+  | Closure of string * string list * expr * value env       (* (f, x, fBody, fDeclEnv) *)
 
 let rec eval (e : expr) (env : value env) : int =
     match e with 
@@ -55,12 +55,18 @@ let rec eval (e : expr) (env : value env) : int =
     | Letfun(f, x, fBody, letBody) -> 
       let bodyEnv = (f, Closure(f, x, fBody, env)) :: env 
       eval letBody bodyEnv
-    | Call(Var f, eArg) -> 
+    | Call(Var f, eArgs) -> 
       let fClosure = lookup env f
       match fClosure with
       | Closure (f, x, fBody, fDeclEnv) ->
-        let xVal = Int(eval eArg env)
-        let fBodyEnv = (x, xVal) :: (f, fClosure) :: fDeclEnv
+        let args = List.zip x eArgs
+        let rec build_env args = 
+            match args with
+            | [] -> (f, fClosure) :: fDeclEnv
+            | (x, eArg) :: xs -> 
+                let xVal = Int(eval eArg env)
+                (x, xVal) :: build_env xs
+        let fBodyEnv = build_env args
         eval fBody fBodyEnv
       | _ -> failwith "eval Call: not a function"
     | Call _ -> failwith "eval Call: not first-order function"
@@ -70,6 +76,8 @@ let rec eval (e : expr) (env : value env) : int =
 let run e = eval e [];;
 
 (* Examples in abstract syntax *)
+
+(* THESE EXAMPLES NO LONGER WORK SINCE WE HAVE UPDATED OUR LANGUAGE TO BE KINDA COOL ;) (which of course the old version wasn't)
 
 let ex1 = Letfun("f1", "x", Prim("+", Var "x", CstI 1), 
                  Call(Var "f1", CstI 12));;
@@ -114,3 +122,4 @@ let ex5 =
                           Call(Var "fib", Prim("-", Var "n", CstI 2))),
                      CstI 1), Call(Var "fib", CstI 25)));;
                      
+*)

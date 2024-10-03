@@ -15,13 +15,15 @@
 %token PLUS MINUS TIMES DIV MOD
 %token EQ NE GT LT GE LE
 %token LPAR RPAR 
+%token AND OR
 %token EOF
 
 %left ELSE              /* lowest precedence  */
 %left EQ NE 
-%nonassoc GT LT GE LE
+%left GT LT GE LE
 %left PLUS MINUS
 %left TIMES DIV MOD 
+%left AND OR
 %nonassoc NOT           /* highest precedence  */
 
 %start Main
@@ -33,6 +35,13 @@
 Main:
     Expr EOF                            { $1 }
 ;
+
+Args: 
+    NAME                                { [$1]     }
+  | NAME Args                           { $1 :: $2 }
+;
+
+
 
 Expr:
     AtExpr                              { $1                     }
@@ -50,19 +59,25 @@ Expr:
   | Expr LT    Expr                     { Prim("<",  $1, $3)     }
   | Expr GE    Expr                     { Prim(">=", $1, $3)     }
   | Expr LE    Expr                     { Prim("<=", $1, $3)     }
+  | Expr AND   Expr                     { If($1, $3, CstB(false))}
+  | Expr OR    Expr                     { If($1, CstB(true), $3) }
 ;
 
 AtExpr:
     Const                               { $1                     }
   | NAME                                { Var $1                 }
   | LET NAME EQ Expr IN Expr END        { Let($2, $4, $6)        }
-  | LET NAME NAME EQ Expr IN Expr END   { Letfun($2, $3, $5, $7) }
+  | LET NAME Args EQ Expr IN Expr END   { Letfun($2, $3, $5, $7) }
   | LPAR Expr RPAR                      { $2                     }
 ;
 
+ArgVals:
+    AtExpr                              { [$1]     }
+  | AtExpr ArgVals                      { $1 :: $2 }
+;
+
 AppExpr:
-    AtExpr AtExpr                       { Call($1, $2)           }
-  | AppExpr AtExpr                      { Call($1, $2)           }
+    AtExpr ArgVals                      { Call($1, $2)         }
 ;
 
 Const:

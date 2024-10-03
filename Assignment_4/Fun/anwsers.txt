@@ -1,0 +1,5 @@
+4.2
+1: let sum n = if n = 0 then 0 else n + sum (n-1) in sum 1000 end
+2: let pow3 p = if p = 1 then 3 else 3 * pow3 (p-1) in pow3 8 end
+3: let pow3 p = if p = 1 then 3 else 3 * pow3 (p-1) in let powpow3 n = if n = 0 then 1 else powpow3 (n-1) + pow3 n in powpow3 11 end end
+4: let pow8 n = n*n*n*n*n*n*n*n in let sumpow i = if i = 1 then 1 else pow8 i + sumpow (i-1) in sumpow 10 end end
