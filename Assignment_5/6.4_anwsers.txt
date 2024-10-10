@@ -1,0 +1,7 @@
+The trees can be found in their respective png-files
+
+6.4.1:
+ - f should be polymorphic since every type of 'x' will result in an integer and the type of 'x' is not important
+
+6.4.2
+ - f should not be polymorphic since it is used in a less-than comparison which only allows integers

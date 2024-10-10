@@ -1,0 +1,31 @@
+Part 1:
+
+"let f x = 1 in f f end" : int
+
+"let f g = g g in f end" : For this program to run 'g' has to be a function since it is called in 'g g' this results in a circular type and cannot be parsed
+
+"let f x = let g y = y in g false end in f 42 end" : bool
+
+"let f x = let g y = if true then y else x in g false end in f 42 end" : Since the if statement returns either 'x' or 'y' where 'x' has type integer and 'y' has type boolean the type-check cannot pass, even though the if-statement in runtime always returns 'y'
+
+"let f x = let g y = if true then y else x in g false end in f true end" : bool
+
+__________________________________________________-
+
+Part 2:
+
+bool -> bool: "let f x = if x then true else false in f end"
+
+int -> int: "let f x = x + x in f end"
+
+int -> int -> int: "let f x = let g y = x + y in g end in f end"
+
+'a -> 'b -> 'a: "let f x = let g y = x in g end in f end"
+
+'a -> 'b -> 'b: "let f x = let g y = y in g end in f end"
+
+('a -> 'b) -> ('b -> 'c) -> ('a -> 'c): "let a f = let b g = let c h = g (f h) in c end in b end in a end"
+
+'a -> 'b: "let f x = f x in f end"
+
+'a: "let f x = f x in let g x = g x in g f end end"
