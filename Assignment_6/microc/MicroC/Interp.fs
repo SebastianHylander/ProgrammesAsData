@@ -143,7 +143,6 @@ let rec exec stmt (locEnv : locEnv) (gloEnv : gloEnv) (store : store) : store =
           | s1::sr -> loop sr (stmtordec s1 locEnv gloEnv store)
       loop stmts (locEnv, store) 
     | Return _ -> failwith "return not implemented"
-    | Forloop (e1, e2, e3, body)-> Block[e1; While(e2, Block [body; e3])] locEnv gloEnv store |> eval  (*This is not working*)
 
 
 and stmtordec stmtordec locEnv gloEnv store = 
