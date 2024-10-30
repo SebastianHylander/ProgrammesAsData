@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "microc", "microc", "{3529E39F-1C7F-4180-99BE-0E88D551C1DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Imp", "Imp", "{684D0AD9-72EF-46E5-B826-3722266F5914}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parameters", "microc\Imp\Parameters\Parameters.csproj", "{AF54E2B2-8316-4012-A4F5-0BC2AB193A1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF54E2B2-8316-4012-A4F5-0BC2AB193A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF54E2B2-8316-4012-A4F5-0BC2AB193A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF54E2B2-8316-4012-A4F5-0BC2AB193A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF54E2B2-8316-4012-A4F5-0BC2AB193A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{684D0AD9-72EF-46E5-B826-3722266F5914} = {3529E39F-1C7F-4180-99BE-0E88D551C1DD}
+		{AF54E2B2-8316-4012-A4F5-0BC2AB193A1F} = {684D0AD9-72EF-46E5-B826-3722266F5914}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18EA3182-2FCE-4737-A06E-890D3B693C8E}
+	EndGlobalSection
+EndGlobal
