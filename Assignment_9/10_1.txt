@@ -1,0 +1,47 @@
+Exercise 10.1 
+
+i)
+• ADD, which adds two integers.
+The ADD operation places the two integers that are to be added on the top of the stack. 
+The values are then added together, and placed at the top of the stack instead, replacing the two former integers. 
+
+• CSTI i, which pushes integer constant i.
+Reads the given integer and pushes it to the top of the stack. 
+
+• NIL, which pushes a nil reference. What is the difference between NIL and CSTI 0?
+When using CSTI 0, the integer 0 is placed at the top of the stack, while NIL places a reference to nil. 
+
+• IFZERO, which tests whether an integer is zero, or a reference is nil.
+Checks whether the integer at the top of the stack equals 0 or nil, if so, it jumps to the provided address. 
+
+• CONS
+The CONS operation is used to make an element of a list. It takes the two elementes at the top of the stack, and saves them in an allocated memory location, leaving a reference to the cons cell at the top of the stack. 
+
+
+• CAR
+Returns the value of the first element stored in the cons cell at the top of the stack. If the cons cell was (5, nil) CAR would return 5. 
+
+
+• SETCAR
+Sets the value of the first element in the cons cell at the top of the stack. 
+
+
+ii)
+• LENGTH
+Shifts the header two spaces to the right in order to remove the garbage colour (gg), it then creates a bitwise AND operand, comparing the n's with 0X003FFFFF which is 22 1's. 
+ 
+• COLOR
+Compares the header with the number 3, which is the colour blue, meaning the block are either on the freelist or orphaned.   
+
+• PAINT 
+Takes a header and a colour. It makes an AND operation on the header and NOT 3 of which the binary representation is 111..1100, this results in the same header but with the colour equal to 00. 
+It then makes an OR with the provided colour, this results in the same header, which is now coloured the provided colour.  
+
+
+iii)
+The allocate(...) function is called when the abstract machine needs memory for new cons. The abstract machine interacts with the garbage collector when memory is low, and potentially triggers the garbage collector to free up space. 
+
+
+iv) 
+The garbage collector's collect(...) function will be called when, as mentioned above, when the allocate function cannot find enough space on the freelist.  
+
