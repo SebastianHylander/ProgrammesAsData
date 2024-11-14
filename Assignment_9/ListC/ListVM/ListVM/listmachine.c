@@ -39,7 +39,7 @@ The heap consists of 64-bit words, and the heap is divided into
 blocks.  A block has a one-word header block[0] followed by the
 block's contents: zero or more words block[i], i=1..n.
 
-A header has the form for32 bits
+A header has the form for 32 bits
 ttttttttnnnnnnnnnnnnnnnnnnnnnnnngg
 and for 64 bits
 ttttttttnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnngg
@@ -470,14 +470,43 @@ void initheap() {
   freelist = &heap[0];
 }
 
+void mark(word *block) {
+	int length = Length(block[0]); 
+
+	if(block == null || Color(block[0]) == Black) {
+		return;
+	}	
+
+	block[0] = Paint(block[0], Black); 	
+
+	for(int i = 1; i <= length; i++) {
+		if(!IsInt(block[i])) {
+			mark(block[i]);
+		}		
+	}	  
+}  
+
 void markPhase(word s[], word sp) {
-  printf("marking ...\n");
-  // TODO: Actually mark something
+	printf("marking ...\n");
+
+	for(int i = 0; i < sp; i + Length(s[i]) + 1) { //Increments i to the header of the next block
+		mark(s[i]);
+	}
 }
 
 void sweepPhase() {
   printf("sweeping ...\n");
-  // TODO: Actually sweep
+  
+	//10.2
+	for(int i = 0; i < afterHeap; i + Length(heap[i] + 1)) {
+		if(Color(heap[i] == Black) {
+			heap[i] = Paint(heap[i], White); 
+		}
+		else if(Color(heap[i] == White) {
+			heap[i] = Paint(heap[i], Blue); 
+					
+		}
+	}
 }
 
 void collect(word s[], word sp) {
