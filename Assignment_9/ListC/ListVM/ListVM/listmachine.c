@@ -626,7 +626,7 @@ void mark(word *block)
 {
   int length = Length(block[0]);
 
-  if (block == null || Color(block[0]) == Black)
+  if (block == NULL || Color(block[0]) == Black)
   {
     return;
   }
@@ -660,17 +660,25 @@ void sweepPhase()
   printf("sweeping ...\n");
 
   // 10.2
-  for (int i = 0; i < afterHeap; i + Length(heap[i] + 1))
+  for (word *p = heap; p < afterHeap; p = p + Length(p[0]) + 1)
   {
-    if (Color(heap[i] == Black))
+    if (Color(p[0]) == Black)
     {
-      heap[i] = Paint(heap[i], White);
+      p[0] = Paint(p[0], White);
     }
-    else if (Color(heap[i] == White))
+    else if (Color(p[0]) == White)
     {
-      heap[i] = Paint(heap[i], Blue);
-      heap[i + 1] = freelist;
-      freelist = &heap[i];
+      word *start = p;
+      word *end = p + Length(p[0]) + 1;
+      while (end < afterHeap && Color(end[0]) == White)
+      {
+        end = end + Length(end[0]) + 1;
+      }
+      p[0] = mkheader(0, end - start - 1, Blue);
+      p[1] = freelist;
+      freelist = &p[0];
+
+      p = end;
     }
   }
 }
