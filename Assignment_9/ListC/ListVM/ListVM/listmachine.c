@@ -503,9 +503,11 @@ void sweepPhase() {
 			heap[i] = Paint(heap[i], White); 
 		}
 		else if(Color(heap[i] == White) {
-			heap[i] = Paint(heap[i], Blue); 
-					
+			heap[i] = Paint(heap[i], Blue);
+      heap[i + 1] = freelist;
+      freelist = &heap[i];  	
 		}
+      
 	}
 }
 
