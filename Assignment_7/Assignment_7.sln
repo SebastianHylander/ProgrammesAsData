@@ -1,0 +1,163 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "microc", "microc", "{8FA2FF69-F150-5984-1086-5122D84F4246}"
+	ProjectSection(SolutionItems) = preProject
+		microc\MicroC\ex26.c = microc\MicroC\ex26.c
+		microc\MicroC\ex19.c = microc\MicroC\ex19.c
+		microc\MicroC\CPar.fs = microc\MicroC\CPar.fs
+		microc\MicroC\ParseAndComp.fs = microc\MicroC\ParseAndComp.fs
+		microc\MicroC\ex23.out = microc\MicroC\ex23.out
+		microc\MicroC\ex5.c = microc\MicroC\ex5.c
+		microc\MicroC\obj\project.assets.json = microc\MicroC\obj\project.assets.json
+		microc\MicroC\obj\microcc.fsproj.nuget.g.targets = microc\MicroC\obj\microcc.fsproj.nuget.g.targets
+		microc\MicroC\obj\project.nuget.cache = microc\MicroC\obj\project.nuget.cache
+		microc\MicroC\obj\microcc.fsproj.nuget.g.props = microc\MicroC\obj\microcc.fsproj.nuget.g.props
+		microc\MicroC\obj\microcc.fsproj.nuget.dgspec.json = microc\MicroC\obj\microcc.fsproj.nuget.dgspec.json
+		microc\MicroC\obj\Debug\net8.0\microcc.AssemblyInfoInputs.cache = microc\MicroC\obj\Debug\net8.0\microcc.AssemblyInfoInputs.cache
+		microc\MicroC\obj\Debug\net8.0\microcc.fsproj.Up2Date = microc\MicroC\obj\Debug\net8.0\microcc.fsproj.Up2Date
+		microc\MicroC\obj\Debug\net8.0\microcc.fsproj.CoreCompileInputs.cache = microc\MicroC\obj\Debug\net8.0\microcc.fsproj.CoreCompileInputs.cache
+		microc\MicroC\obj\Debug\net8.0\microcc.assets.cache = microc\MicroC\obj\Debug\net8.0\microcc.assets.cache
+		microc\MicroC\obj\Debug\net8.0\ref\microcc.dll = microc\MicroC\obj\Debug\net8.0\ref\microcc.dll
+		microc\MicroC\obj\Debug\net8.0\microcc.fsproj.AssemblyReference.cache = microc\MicroC\obj\Debug\net8.0\microcc.fsproj.AssemblyReference.cache
+		microc\MicroC\obj\Debug\net8.0\microcc.AssemblyInfo.fs = microc\MicroC\obj\Debug\net8.0\microcc.AssemblyInfo.fs
+		microc\MicroC\obj\Debug\net8.0\refint\microcc.dll = microc\MicroC\obj\Debug\net8.0\refint\microcc.dll
+		microc\MicroC\obj\Debug\net8.0\microcc.genruntimeconfig.cache = microc\MicroC\obj\Debug\net8.0\microcc.genruntimeconfig.cache
+		microc\MicroC\obj\Debug\net8.0\apphost = microc\MicroC\obj\Debug\net8.0\apphost
+		microc\MicroC\obj\Debug\net8.0\microcc.pdb = microc\MicroC\obj\Debug\net8.0\microcc.pdb
+		microc\MicroC\obj\Debug\net8.0\.NETCoreApp,Version = v8.0.AssemblyAttributes.fs = microc\MicroC\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.fs
+		microc\MicroC\obj\Debug\net8.0\microcc.fsproj.FileListAbsolute.txt = microc\MicroC\obj\Debug\net8.0\microcc.fsproj.FileListAbsolute.txt
+		microc\MicroC\obj\Debug\net8.0\microcc.dll = microc\MicroC\obj\Debug\net8.0\microcc.dll
+		microc\MicroC\ex24.c = microc\MicroC\ex24.c
+		microc\MicroC\ex1.out = microc\MicroC\ex1.out
+		microc\MicroC\Absyn.fs = microc\MicroC\Absyn.fs
+		microc\MicroC\ex8.c = microc\MicroC\ex8.c
+		microc\MicroC\ex22.out = microc\MicroC\ex22.out
+		microc\MicroC\ex12tailcall.out = microc\MicroC\ex12tailcall.out
+		microc\MicroC\bin\Debug\net8.0\FsLexYacc.Runtime.dll = microc\MicroC\bin\Debug\net8.0\FsLexYacc.Runtime.dll
+		microc\MicroC\bin\Debug\net8.0\de\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\de\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\microcc = microc\MicroC\bin\Debug\net8.0\microcc
+		microc\MicroC\bin\Debug\net8.0\zh-Hans\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\zh-Hans\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\fr\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\fr\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\ja\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\ja\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\FSharp.Core.dll = microc\MicroC\bin\Debug\net8.0\FSharp.Core.dll
+		microc\MicroC\bin\Debug\net8.0\es\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\es\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\cs\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\cs\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\ru\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\ru\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\it\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\it\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\microcc.runtimeconfig.json = microc\MicroC\bin\Debug\net8.0\microcc.runtimeconfig.json
+		microc\MicroC\bin\Debug\net8.0\pl\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\pl\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\microcc.deps.json = microc\MicroC\bin\Debug\net8.0\microcc.deps.json
+		microc\MicroC\bin\Debug\net8.0\pt-BR\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\pt-BR\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\microcc.pdb = microc\MicroC\bin\Debug\net8.0\microcc.pdb
+		microc\MicroC\bin\Debug\net8.0\zh-Hant\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\zh-Hant\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\ko\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\ko\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\tr\FSharp.Core.resources.dll = microc\MicroC\bin\Debug\net8.0\tr\FSharp.Core.resources.dll
+		microc\MicroC\bin\Debug\net8.0\microcc.dll = microc\MicroC\bin\Debug\net8.0\microcc.dll
+		microc\MicroC\ex3.c = microc\MicroC\ex3.c
+		microc\MicroC\Util.fs = microc\MicroC\Util.fs
+		microc\MicroC\ex15.c = microc\MicroC\ex15.c
+		microc\MicroC\ex25.out = microc\MicroC\ex25.out
+		microc\MicroC\out = microc\MicroC\out
+		microc\MicroC\CPar.fsi = microc\MicroC\CPar.fsi
+		microc\MicroC\prog1 = microc\MicroC\prog1
+		microc\MicroC\ex4.c = microc\MicroC\ex4.c
+		microc\MicroC\ex12.c = microc\MicroC\ex12.c
+		microc\MicroC\arrsum.c = microc\MicroC\arrsum.c
+		microc\MicroC\ex13.c = microc\MicroC\ex13.c
+		microc\MicroC\ex13.out = microc\MicroC\ex13.out
+		microc\MicroC\ex26.out = microc\MicroC\ex26.out
+		microc\MicroC\CPar.exe = microc\MicroC\CPar.exe
+		microc\MicroC\histogram.c = microc\MicroC\histogram.c
+		microc\MicroC\ex3trace = microc\MicroC\ex3trace
+		microc\MicroC\ex25.code = microc\MicroC\ex25.code
+		microc\MicroC\ParseAndContcomp.fs = microc\MicroC\ParseAndContcomp.fs
+		microc\MicroC\squares.c = microc\MicroC\squares.c
+		microc\MicroC\ex2.c = microc\MicroC\ex2.c
+		microc\MicroC\ex11.out = microc\MicroC\ex11.out
+		microc\MicroC\Machine.fs = microc\MicroC\Machine.fs
+		microc\MicroC\CLex.fsi = microc\MicroC\CLex.fsi
+		microc\MicroC\tailEx.c = microc\MicroC\tailEx.c
+		microc\MicroC\tailEx2.out = microc\MicroC\tailEx2.out
+		microc\MicroC\ex4.out = microc\MicroC\ex4.out
+		microc\MicroC\ex18.c = microc\MicroC\ex18.c
+		microc\MicroC\README.TXT = microc\MicroC\README.TXT
+		microc\MicroC\ex21.out = microc\MicroC\ex21.out
+		microc\MicroC\testing.c = microc\MicroC\testing.c
+		microc\MicroC\ex7.c = microc\MicroC\ex7.c
+		microc\MicroC\ex14.c = microc\MicroC\ex14.c
+		microc\MicroC\Machine.class = microc\MicroC\Machine.class
+		microc\MicroC\ex11.c = microc\MicroC\ex11.c
+		microc\MicroC\Machinetrace.class = microc\MicroC\Machinetrace.class
+		microc\MicroC\microcc.fsproj = microc\MicroC\microcc.fsproj
+		microc\MicroC\ex21.c = microc\MicroC\ex21.c
+		microc\MicroC\ex12notailcall.out = microc\MicroC\ex12notailcall.out
+		microc\MicroC\ex1.c = microc\MicroC\ex1.c
+		microc\MicroC\ex9.out = microc\MicroC\ex9.out
+		microc\MicroC\machine.c = microc\MicroC\machine.c
+		microc\MicroC\tailEx.out = microc\MicroC\tailEx.out
+		microc\MicroC\Comp.fs = microc\MicroC\Comp.fs
+		microc\MicroC\ex10.out = microc\MicroC\ex10.out
+		microc\MicroC\Parse.fs = microc\MicroC\Parse.fs
+		microc\MicroC\ex17.c = microc\MicroC\ex17.c
+		microc\MicroC\ParseAndRun.fs = microc\MicroC\ParseAndRun.fs
+		microc\MicroC\grammar.txt = microc\MicroC\grammar.txt
+		microc\MicroC\forloopTest.c = microc\MicroC\forloopTest.c
+		microc\MicroC\ex2.out = microc\MicroC\ex2.out
+		microc\MicroC\ex16.c = microc\MicroC\ex16.c
+		microc\MicroC\wrapUpEx01.out = microc\MicroC\wrapUpEx01.out
+		microc\MicroC\bar = microc\MicroC\bar
+		microc\MicroC\ex20.c = microc\MicroC\ex20.c
+		microc\MicroC\ex10.c = microc\MicroC\ex10.c
+		microc\MicroC\ex23.c = microc\MicroC\ex23.c
+		microc\MicroC\ex6.out = microc\MicroC\ex6.out
+		microc\MicroC\Interp.fs = microc\MicroC\Interp.fs
+		microc\MicroC\machine = microc\MicroC\machine
+		microc\MicroC\CLex.fs = microc\MicroC\CLex.fs
+		microc\MicroC\CLex.fsl = microc\MicroC\CLex.fsl
+		microc\MicroC\Machine.java = microc\MicroC\Machine.java
+		microc\MicroC\Contcomp.fs = microc\MicroC\Contcomp.fs
+		microc\MicroC\ex22.c = microc\MicroC\ex22.c
+		microc\MicroC\ex8.out = microc\MicroC\ex8.out
+		microc\MicroC\ex19.out = microc\MicroC\ex19.out
+		microc\MicroC\ex5.out = microc\MicroC\ex5.out
+		microc\MicroC\prog0 = microc\MicroC\prog0
+		microc\MicroC\wrapUpEx01.c = microc\MicroC\wrapUpEx01.c
+		microc\MicroC\ex12.out = microc\MicroC\ex12.out
+		microc\MicroC\CPar.fsy = microc\MicroC\CPar.fsy
+		microc\MicroC\ex3.out = microc\MicroC\ex3.out
+		microc\MicroC\ex9.c = microc\MicroC\ex9.c
+		microc\MicroC\ex25.c = microc\MicroC\ex25.c
+		microc\MicroC\MicroCC.fs = microc\MicroC\MicroCC.fs
+		microc\MicroC\ex6.c = microc\MicroC\ex6.c
+		microc\MicroC\wrapUpEx01.exe = microc\MicroC\wrapUpEx01.exe
+		microc\MicroC\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.fs = microc\MicroC\obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.fs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Imp", "Imp", "{3B42BE31-CC9E-6756-A99C-5A81903DB698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parameters", "microc\Imp\Parameters\Parameters.csproj", "{400F7C25-D301-BAA8-1E37-05C700ECEA58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{400F7C25-D301-BAA8-1E37-05C700ECEA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{400F7C25-D301-BAA8-1E37-05C700ECEA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{400F7C25-D301-BAA8-1E37-05C700ECEA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{400F7C25-D301-BAA8-1E37-05C700ECEA58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B42BE31-CC9E-6756-A99C-5A81903DB698} = {8FA2FF69-F150-5984-1086-5122D84F4246}
+		{400F7C25-D301-BAA8-1E37-05C700ECEA58} = {3B42BE31-CC9E-6756-A99C-5A81903DB698}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D23896C-DB25-429A-A0CA-92700106D920}
+	EndGlobalSection
+EndGlobal

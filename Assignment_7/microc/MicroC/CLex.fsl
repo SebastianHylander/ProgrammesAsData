@@ -28,7 +28,7 @@ let keyword s =
     | "true"    -> CSTBOOL 1
     | "void"    -> VOID 
     | "while"   -> WHILE
-    | "for"     -> FOR   
+    | "for"     -> FOR
     | _         -> NAME s
  
 let cEscape s = 
@@ -81,6 +81,8 @@ rule Token = parse
   | eof             { EOF }
   | "++"            { INC }
   | "--"            { DEC }
+  | '?'             { QMARK }
+  | ':'             { COLON }
   | _               { failwith "Lexer error: illegal symbol" }
 
 and Comment = parse
