@@ -25,6 +25,7 @@ and expr =
   | Call of string * expr list       (* Function call f(...)        *)
   | Preinc of access                 (* ++x  or  ++*p  or  ++a[e]   *)
   | Predec of access                 (* --x  or  --*p  or  --a[e]   *)
+  | Cond of expr * expr * expr       (* e1 ? e2 : e3  Exercise 12.3 *)  
                                                                    
 and access =                                                       
   | AccVar of string                 (* Variable access        x    *) 

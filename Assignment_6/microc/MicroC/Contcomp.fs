@@ -95,6 +95,21 @@ let rec addCST i C =
     | (_, NOT        :: C1) -> addCST 0 C1
     | (1, MUL        :: C1) -> C1
     | (1, DIV        :: C1) -> C1
+    | (a, CSTI b :: LT :: C1) -> if a < b                //Exercise 12.2 (a < b)
+                                    then CSTI 1 :: C1
+                                    then CSTI 0 :: C1 
+    | (a, CSTI b :: LE :: C1) -> if a <= b               //Exercise 12.2 (a <= b)
+                                    then CSTI 1 :: C1
+                                    then CSTI 0 :: C1 
+    | (a, CSTI b :: NE :: C1) -> if a <> b               //Exercise 12.2 (a != b)
+                                    then CSTI 1 :: C1
+                                    then CSTI 0 :: C1   
+    | (a, CSTI b :: GT :: C1) -> if a > b               //Exercise 12.2 (a > b)
+                                    then CSTI 1 :: C1
+                                    then CSTI 0 :: C1  
+    | (a, CSTI b :: GE :: C1) -> if a >= b               //Exercise 12.2 (a >= b)
+                                    then CSTI 1 :: C1
+                                    then CSTI 0 :: C1        
     | (0, EQ         :: C1) -> addNOT C1
     | (_, INCSP m    :: C1) -> if m < 0 then addINCSP (m+1) C1
                                else CSTI i :: C
@@ -298,8 +313,12 @@ and cExpr (e : expr) (varEnv : varEnv) (funEnv : funEnv) (C : instr list) : inst
         let (labtrue, C2) = addLabel(addCST 1 C1)
         cExpr e1 varEnv funEnv
            (IFNZRO labtrue 
-             :: cExpr e2 varEnv funEnv (addJump jumpend C2))
+             :: cExpr e2 varEnv funEnv (addJump jumpend C2)) 
     | Call(f, es) -> callfun f es varEnv funEnv C
+    | Cond(e1, e2, e3) ->                          (* Exercise 12.3 *)
+        let (jumpend, C1) = makeJump C
+        let (labelse, C2) = addLabel (cExpr e3 varEnv funEnv C1)
+        cExpr e1 varEnv funEnvv (IFZERO labelse :: cExpr e2 varEnv funEnv (addjJump jumpend C2))
 
 (* Generate code to access variable, dereference pointer or index array: *)
 
