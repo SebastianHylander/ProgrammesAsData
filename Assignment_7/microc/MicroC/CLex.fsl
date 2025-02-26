@@ -81,8 +81,8 @@ rule Token = parse
   | eof             { EOF }
   | "++"            { INC }
   | "--"            { DEC }
-  | '?'             { QMARK }
-  | ':'             { COLON }
+  | '?'             { QMARK } // exercise 8.5
+  | ':'             { COLON } // exercise 8.5
   | _               { failwith "Lexer error: illegal symbol" }
 
 and Comment = parse
