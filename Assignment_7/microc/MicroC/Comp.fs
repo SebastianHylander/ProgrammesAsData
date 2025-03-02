@@ -168,15 +168,15 @@ and cExpr (e : expr) (varEnv : varEnv) (funEnv : funEnv) : instr list =
     | Assign(acc, e) -> cAccess acc varEnv funEnv @ cExpr e varEnv funEnv @ [STI]
     | CstI i         -> [CSTI i]
     | Addr acc       -> cAccess acc varEnv funEnv
-    | PreInc acc     -> cAccess acc varEnv funEnv @ [DUP; LDI; CSTI 1; ADD; STI] // 8.3
-    | PreDec acc     -> cAccess acc varEnv funEnv @ [DUP; LDI; CSTI 1; SUB; STI] // 8.3 
-    | Condition(e, expr1, expr2) -> // exercise 8.5
+    | PreInc acc     -> cAccess acc varEnv funEnv @ [DUP; LDI; CSTI 1; ADD; STI] // Exercise 8.3
+    | PreDec acc     -> cAccess acc varEnv funEnv @ [DUP; LDI; CSTI 1; SUB; STI] // Exercise 8.3 
+    | Condition(e, expr1, expr2) -> // Exercise 8.5 - start
       let labelse = newLabel()
       let labend  = newLabel()
       cExpr e varEnv funEnv @ [IFZERO labelse]
       @ cExpr expr1 varEnv funEnv @ [GOTO labend]
       @ [Label labelse] @ cExpr expr2 varEnv funEnv
-      @ [Label labend]  
+      @ [Label labend]              // Exercise 8.5 - slut
     | Prim1(ope, e1) ->
       cExpr e1 varEnv funEnv
       @ (match ope with

@@ -15,7 +15,7 @@
 %token PLUS MINUS TIMES DIV MOD
 %token EQ NE GT LT GE LE
 %token LPAR RPAR 
-%token AND OR
+%token AND OR    (* Exercise 4.5 *)
 %token EOF
 
 %left ELSE              /* lowest precedence  */
@@ -23,7 +23,7 @@
 %left GT LT GE LE
 %left PLUS MINUS
 %left TIMES DIV MOD 
-%left AND OR
+%left AND OR    //Exercise 4.5
 %nonassoc NOT           /* highest precedence  */
 
 %start Main
@@ -59,8 +59,8 @@ Expr:
   | Expr LT    Expr                     { Prim("<",  $1, $3)     }
   | Expr GE    Expr                     { Prim(">=", $1, $3)     }
   | Expr LE    Expr                     { Prim("<=", $1, $3)     }
-  | Expr AND   Expr                     { If($1, $3, CstB(false))}
-  | Expr OR    Expr                     { If($1, CstB(true), $3) }
+  | Expr AND   Expr                     { If($1, $3, CstB(false))}   // Exercise 4.5 (CstB er booleans)  'if e1 then e2 else false'
+  | Expr OR    Expr                     { If($1, CstB(true), $3) }  // Exercise 4.5 'if e1 then true else e2'
 ;
 
 AtExpr:
@@ -77,7 +77,7 @@ ArgVals:
 ;
 
 AppExpr:
-    AtExpr ArgVals                      { Call($1, $2)         }
+    AtExpr ArgVals                      { Call($1, $2)         }   (* Exercise 4.4 *)
 ;
 
 Const:

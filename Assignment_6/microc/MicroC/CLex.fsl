@@ -28,7 +28,7 @@ let keyword s =
     | "true"    -> CSTBOOL 1
     | "void"    -> VOID 
     | "while"   -> WHILE
-    | "for"     -> FOR   
+    | "for"     -> FOR     (* Exercise 7.3 *) 
     | _         -> NAME s
  
 let cEscape s = 
@@ -79,8 +79,8 @@ rule Token = parse
   | "/*"            { Comment lexbuf; Token lexbuf }
   | '"'             { CSTSTRING (String [] lexbuf) }
   | eof             { EOF }
-  | "++"            { INC }
-  | "--"            { DEC }
+  | "++"            { INC }    // Exercise 7.5
+  | "--"            { DEC }    // Exercise 7.5
   | _               { failwith "Lexer error: illegal symbol" }
 
 and Comment = parse

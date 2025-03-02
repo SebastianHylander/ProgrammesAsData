@@ -17,9 +17,10 @@
 %token LPAR RPAR 
 %token EOF
 %token FUN
-%token ARROW
+%token ARROW    // Exercise 6.3
 
 %left ELSE              /* lowest precedence  */
+%left ARROW     // Exercise 6.3
 %left EQ NE 
 %left GT LT GE LE
 %left PLUS MINUS
@@ -60,7 +61,7 @@ AtExpr:
   | NAME                                { Var $1                 }
   | LET NAME EQ Expr IN Expr END        { Let($2, $4, $6)        }
   | LET NAME NAME EQ Expr IN Expr END   { Letfun($2, $3, $5, $7) }
-  | FUN NAME ARROW Expr                 { Fun($2, $4)            }
+  | FUN NAME ARROW Expr                 { Fun($2, $4)            }  // Exercise 6.3 
   | LPAR Expr RPAR                      { $2                     }
 ;
 

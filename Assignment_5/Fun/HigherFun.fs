@@ -59,7 +59,7 @@ let rec eval (e : expr) (env : value env) : value =
     | Letfun(f, x, fBody, letBody) -> 
       let bodyEnv = (f, Closure(f, x, fBody, env)) :: env
       eval letBody bodyEnv
-    | Fun(x, fbody) -> Clos(x, fbody, env)
+    | Fun(x, fbody) -> Clos(x, fbody, env)   (*  Exercise 6.2 *) 
     | Call(eFun, eArg) -> 
       let fClosure = eval eFun env  (* Different from Fun.fs - to enable first class functions *)
       match fClosure with
@@ -67,10 +67,10 @@ let rec eval (e : expr) (env : value env) : value =
         let xVal = eval eArg env
         let fBodyEnv = (x, xVal) :: (f, fClosure) :: fDeclEnv
         in eval fBody fBodyEnv
-      | Clos (x, fBody, fDeclEnv) ->
+      | Clos (x, fBody, fDeclEnv) ->   (* Exercise 6.2 - Start *)
         let xVal = eval eArg env
         let fBodyEnv = (x, xVal) :: fDeclEnv
-        in eval fBody fBodyEnv
+        in eval fBody fBodyEnv         (* Exercise 6.2 - Slut *)
       | _ -> failwith "eval Call: not a function";;
 
 (* Evaluate in empty environment: program must have no free variables: *)

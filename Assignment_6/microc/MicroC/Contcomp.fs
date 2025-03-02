@@ -97,19 +97,19 @@ let rec addCST i C =
     | (1, DIV        :: C1) -> C1
     | (a, CSTI b :: LT :: C1) -> if a < b                //Exercise 12.2 (a < b)
                                     then CSTI 1 :: C1
-                                    then CSTI 0 :: C1 
+                                    else CSTI 0 :: C1 
     | (a, CSTI b :: LE :: C1) -> if a <= b               //Exercise 12.2 (a <= b)
                                     then CSTI 1 :: C1
-                                    then CSTI 0 :: C1 
+                                    else CSTI 0 :: C1 
     | (a, CSTI b :: NE :: C1) -> if a <> b               //Exercise 12.2 (a != b)
                                     then CSTI 1 :: C1
-                                    then CSTI 0 :: C1   
+                                    else CSTI 0 :: C1   
     | (a, CSTI b :: GT :: C1) -> if a > b               //Exercise 12.2 (a > b)
                                     then CSTI 1 :: C1
-                                    then CSTI 0 :: C1  
+                                    else CSTI 0 :: C1  
     | (a, CSTI b :: GE :: C1) -> if a >= b               //Exercise 12.2 (a >= b)
                                     then CSTI 1 :: C1
-                                    then CSTI 0 :: C1        
+                                    else CSTI 0 :: C1        
     | (0, EQ         :: C1) -> addNOT C1
     | (_, INCSP m    :: C1) -> if m < 0 then addINCSP (m+1) C1
                                else CSTI i :: C

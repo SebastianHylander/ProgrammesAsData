@@ -15,7 +15,7 @@ let nl = CstI 10
 %token <string> CSTSTRING NAME
 
 %token CHAR ELSE IF INT NULL PRINT PRINTLN RETURN VOID WHILE FOR
-%token PLUS MINUS TIMES DIV MOD INC DEC
+%token PLUS MINUS TIMES DIV MOD INC DEC    // Exercise 8.3 
 %token EQ NE GT LT GE LE
 %token NOT SEQOR SEQAND
 %token QMARK COLON // exercise 8.5
@@ -26,6 +26,7 @@ let nl = CstI 10
 
 %right ASSIGN             /* lowest precedence */
 %nonassoc PRINT
+%right QMARK COLON    // Exercise 8.5
 %left SEQOR
 %left SEQAND
 %left EQ NE 
@@ -33,7 +34,7 @@ let nl = CstI 10
 %left PLUS MINUS
 %left TIMES DIV MOD 
 %nonassoc NOT AMP 
-%right INC DEC
+%right INC DEC      // Exercise 8.3
 %nonassoc LBRACK          /* highest precedence  */
 
 %start Main

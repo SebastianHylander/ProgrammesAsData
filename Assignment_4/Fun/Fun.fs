@@ -54,9 +54,9 @@ let rec eval (e : expr) (env : value env) : int =
       else eval e3 env
     | Letfun(f, x, fBody, letBody) -> 
       let bodyEnv = (f, Closure(f, x, fBody, env)) :: env 
-      eval letBody bodyEnv
-    | Call(Var f, eArgs) -> 
-      let fClosure = lookup env f
+      eval letBody bodyEnv   //Evaluerer og laver en Closure    (* 4.3 *)
+    | Call(Var f, eArgs) ->  //eArgs er en liste af parametre 
+      let fClosure = lookup env f  //Leder efter funktionens (f) closure 
       match fClosure with
       | Closure (f, x, fBody, fDeclEnv) ->
         let args = List.zip x eArgs

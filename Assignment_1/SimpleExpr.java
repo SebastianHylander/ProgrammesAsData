@@ -22,14 +22,14 @@ abstract class Expr {
     }
 }
 
-class CstI extends Expr { 
+class CstI extends Expr {                        // Exercise 1.4 (i) CSTI
     protected final int i;
 
     public CstI(int i) { 
         this.i = i; 
     }
 
-    public int eval(Map<String,Integer> env) {
+    public int eval(Map<String,Integer> env) {  // Exercise 1.4 (iii)
         return i;
     } 
 
@@ -42,14 +42,14 @@ class CstI extends Expr {
     }
 }
 
-class Var extends Expr { 
+class Var extends Expr {                         // Exercise 1.4 (i) Var
     protected final String name;
 
     public Var(String name) { 
         this.name = name; 
     }
 
-    public int eval(Map<String,Integer> env) {
+    public int eval(Map<String,Integer> env) {  // Exercise 1.4 (iii)
         return env.get(name);
     } 
 
@@ -62,24 +62,24 @@ class Var extends Expr {
     } 
 }
 
-abstract class Binop extends Expr {
+abstract class Binop extends Expr {                     // Exercise 1.4 (i) Binop
     protected final Expr e1, e2;
 
     public Binop(Expr e1, Expr e2) {
       this.e1 = e1; this.e2 = e2;
     }
 
-    abstract public int eval(Map<String,Integer> env);
+    abstract public int eval(Map<String,Integer> env); // Exercise 1.4 (iii)
     abstract public String fmt();
     abstract public String fmt2(Map<String,Integer> env);
 }
 
-class Add extends Binop {
+class Add extends Binop {                       // Exercise 1.4 (i) Binop - Add
     public Add(Expr e1, Expr e2) {
         super(e1, e2);
     }
 
-    public int eval(Map<String,Integer> env) {
+    public int eval(Map<String,Integer> env) {  // Exercise 1.4 (iii)
         return e1.eval(env) + e2.eval(env);
     }
 
@@ -92,7 +92,7 @@ class Add extends Binop {
     }
 
     @Override
-    public Expr simplify(){
+    public Expr simplify(){                           // Exercise 1.4 (iv)
         Expr e1s = e1.simplify();
         Expr e2s = e2.simplify();
         if (e1s instanceof CstI){
@@ -111,12 +111,12 @@ class Add extends Binop {
     }
 }
 
-class Sub extends Binop {
+class Sub extends Binop {                           // Exercise 1.4 (i) Binop - Sub
     public Sub(Expr e1, Expr e2) {
         super(e1, e2);
     }
 
-    public int eval(Map<String,Integer> env) {
+    public int eval(Map<String,Integer> env) {      // Exercise 1.4 (iii)
         return e1.eval(env) - e2.eval(env);
     }
 
@@ -128,7 +128,7 @@ class Sub extends Binop {
         return "(" + e1.fmt2(env) + " - " + e2.fmt2(env) + ")";
     }
 
-    @Override
+    @Override                                      // Exercise 1.4 (iv)
     public Expr simplify(){
         Expr e1s = e1.simplify();
         Expr e2s = e2.simplify();
@@ -149,12 +149,12 @@ class Sub extends Binop {
     }
 }
 
-class Mul extends Binop {
+class Mul extends Binop {                           // Exercise 1.4 (i) Binop - Mul
     public Mul(Expr e1, Expr e2) {
         super(e1, e2);
     }
 
-    public int eval(Map<String,Integer> env) {
+    public int eval(Map<String,Integer> env) {   // Exercise 1.4 (iii)
         return e1.eval(env) * e2.eval(env);
     }
 
@@ -166,8 +166,8 @@ class Mul extends Binop {
         return "(" + e1.fmt2(env) + " * " + e2.fmt2(env) + ")";
     }
 
-    @Override
-    public Expr simplify(){
+    @Override                                   // Exercise 1.4 (iv)
+    public Expr simplify(){                     
         Expr e1s = e1.simplify();
         Expr e2s = e2.simplify();
         if (e1s instanceof CstI){
@@ -201,7 +201,7 @@ class Prim extends Expr {
         this.oper = oper; this.e1 = e1; this.e2 = e2;
     }
 
-    public int eval(Map<String,Integer> env) {
+    public int eval(Map<String,Integer> env) {    // Exercise 1.4 (iii)
         if (oper.equals("+"))
         return e1.eval(env) + e2.eval(env);
         else if (oper.equals("*"))
@@ -241,13 +241,13 @@ public class SimpleExpr {
         System.out.println(e3.fmt() + " = " + e3.fmt2(env0) + " = " + e3.eval(env0));
 
         
-        Expr e4 = new Add (new CstI(3), new Mul(new CstI(5), new Var("x")));
+        Expr e4 = new Add (new CstI(3), new Mul(new CstI(5), new Var("x")));                            // Exercise 1.4 (ii) Start
         Expr e5 = new Mul(new Mul(new Add(new CstI(7), new CstI(4)), new Var ("y")), new Var("z"));
         Expr e6 = new Sub(new Mul(new CstI(3), new Var("x")), new Add(new CstI(7), new Var("y")));
 
         System.out.println(e4.toString());
         System.out.println(e5.toString());
-        System.out.println(e6.toString());
+        System.out.println(e6.toString());                                                              // Exercise 1.4 (ii) Slut
 
     }
 }

@@ -35,7 +35,7 @@ rule Token = parse
   | '('             { LPAR  } 
   | ')'             { RPAR  } 
   | eof             { EOF   }
-  | '?'             { QMARK }
-  | ':'             { COLON }
+  | '?'             { QMARK }     (* Exercise 3.7 *)
+  | ':'             { COLON }     (* Exercise 3.7 *)
   | _               { failwith "Lexer error: illegal symbol" }
   

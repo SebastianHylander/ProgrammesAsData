@@ -23,8 +23,8 @@ and expr =
   | Andalso of expr * expr           (* Sequential and              *)
   | Orelse of expr * expr            (* Sequential or               *)
   | Call of string * expr list       (* Function call f(...)        *)
-  | Preinc of access                 (* ++x  or  ++*p  or  ++a[e]   *)
-  | Predec of access                 (* --x  or  --*p  or  --a[e]   *)
+  | Preinc of access                 (* ++x  or  ++*p  or  ++a[e]   *)  (* Exercise 7.4 *)
+  | Predec of access                 (* --x  or  --*p  or  --a[e]   *)  (* Exercise 7.4 *)
                                                                    
 and access =                                                       
   | AccVar of string                 (* Variable access        x    *) 

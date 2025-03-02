@@ -79,8 +79,8 @@ rule Token = parse
   | "/*"            { Comment lexbuf; Token lexbuf }
   | '"'             { CSTSTRING (String [] lexbuf) }
   | eof             { EOF }
-  | "++"            { INC }
-  | "--"            { DEC }
+  | "++"            { INC }   // Exercise 8.3
+  | "--"            { DEC }   // Exercise 8.3
   | '?'             { QMARK } // exercise 8.5
   | ':'             { COLON } // exercise 8.5
   | _               { failwith "Lexer error: illegal symbol" }

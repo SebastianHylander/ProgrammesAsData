@@ -642,7 +642,7 @@ void mark(word *block)
   }
 }
 
-void markPhase(word s[], word sp)
+void markPhase(word s[], word sp)  // Exercise 10.2 
 {
   printf("marking ...\n");
 
@@ -655,11 +655,10 @@ void markPhase(word s[], word sp)
   }
 }
 
-void sweepPhase()
+void sweepPhase()  // Exercise 10.2 
 {
   printf("sweeping ...\n");
 
-  // 10.2
   for (word *p = heap; p < afterHeap; p = p + Length(p[0]) + 1)
   {
     if (Color(p[0]) == Black)
@@ -683,7 +682,7 @@ void sweepPhase()
   }
 }
 
-void collect(word s[], word sp)
+void collect(word s[], word sp)    // Exercise 10.2 
 {
   markPhase(s, sp);
   heapStatistics();

@@ -206,7 +206,7 @@ and cExpr (e : expr) (varEnv : varEnv) (funEnv : funEnv) : instr list =
       @ cExpr e2 varEnv funEnv
       @ [GOTO labend; Label labtrue; CSTI 1; Label labend]
     | Call(f, es) -> callfun f es varEnv funEnv
-    | Cond(e1, e2, e3) ->
+    | Cond(e1, e2, e3) ->      // Exercise 8.5
         let (jumpend, C1) = makeJump C
         let (labelse, C2) = addLabel (cExpr e3 varEnv funEnv C1)
         cExpr e1 varEnv funEnv (IFZERO labelse :: cExpr e2 varEnv funEnv (addJump jumpend C2))

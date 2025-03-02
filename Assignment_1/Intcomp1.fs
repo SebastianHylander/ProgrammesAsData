@@ -10,7 +10,7 @@ module Intcomp1
 type expr = 
   | CstI of int
   | Var of string
-  | Let of (string * expr) list * expr
+  | Let of (string * expr) list * expr  (* 2.1 *)
   | Prim of string * expr * expr;;
 
 (* Some closed expressions: *)
@@ -49,17 +49,16 @@ let rec eval e (env : (string * int) list) : int =
     match e with
     | CstI i            -> i
     | Var x             -> lookup env x 
-    | Let(vars, ebody) -> 
-          let rec make_env = fun lst env ->
+    | Let(vars, ebody) ->                         (* 2.1 *) 
+          let rec make_env = fun lst local_env ->
                 match lst with
                 | [] -> env
                 | (var, v) :: xs -> 
-                    let xval = eval v env
-                    let env1 = (var, xval) :: env 
-                    make_env xs env1
+                    let xval = eval v local_env
+                    let updated_env = (var, xval) :: local_env 
+                    make_env xs updated_env
           let env1 = make_env vars []
-          eval ebody (env@env1)
-
+          eval ebody (env@env1)                   (* 2.1 *)  //Putter det nye env1 efter env
     | Prim("+", e1, e2) -> eval e1 env + eval e2 env
     | Prim("*", e1, e2) -> eval e1 env * eval e2 env
     | Prim("-", e1, e2) -> eval e1 env - eval e2 env
@@ -215,11 +214,11 @@ let rec minus (xs, ys) =
 
 (* Find all variables that occur free in expression e *)
 
-let rec freevars e : string list =
+let rec freevars e : string list =      
     match e with
     | CstI i -> []
     | Var x  -> [x]
-    | Let (vars, ebody) ->
+    | Let (vars, ebody) ->         // Exercise 2.2                    
         let rec freevars_let = fun (lst : (string*expr) list)  ->
                             match lst with
                             | [] -> []
@@ -264,14 +263,14 @@ let rec tcomp (e : expr) (cenv : string list) : texpr =
     match e with
     | CstI i -> TCstI i
     | Var x  -> TVar (getindex cenv x)
-    | Let(vars, ebody) -> 
+    | Let(vars, ebody) ->                             // Exercise 2.3
           let rec make_comp lst cenv ebody =
                 match lst with
                 | [] -> tcomp ebody cenv
                 | (var, v) :: xs -> 
                     let cenv1 = var :: cenv
                     TLet(tcomp v cenv, make_comp xs cenv1 ebody)
-          make_comp vars cenv ebody
+          make_comp vars cenv ebody                  // Exercise 2.3
     | Prim(ope, e1, e2) -> TPrim(ope, tcomp e1 cenv, tcomp e2 cenv);;
 
 (* Evaluation of target expressions with variable indexes.  The

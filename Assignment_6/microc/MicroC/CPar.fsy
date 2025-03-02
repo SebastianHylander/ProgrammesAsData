@@ -14,7 +14,7 @@ let nl = CstI 10
 %token <int> CSTINT CSTBOOL
 %token <string> CSTSTRING NAME
 
-%token CHAR ELSE IF INT NULL PRINT PRINTLN RETURN VOID WHILE FOR
+%token CHAR ELSE IF INT NULL PRINT PRINTLN RETURN VOID WHILE FOR    (* Exercise 7.3 *)
 %token PLUS MINUS TIMES DIV MOD INC DEC
 %token EQ NE GT LT GE LE
 %token NOT SEQOR SEQAND
@@ -101,7 +101,7 @@ StmtM:  /* No unbalanced if-else */
   | Block                               { $1                   }
   | IF LPAR Expr RPAR StmtM ELSE StmtM  { If($3, $5, $7)       }
   | WHILE LPAR Expr RPAR StmtM          { While($3, $5)        }
-  | FOR LPAR Expr SEMI Expr SEMI Expr RPAR Stmt 
+  | FOR LPAR Expr SEMI Expr SEMI Expr RPAR Stmt                         (* Exercise 7.3 *)
                                         { Block [Stmt(Expr($3)); Stmt(While($5, Block [Stmt($9); Stmt(Expr($7))]))] }
 ;
 
@@ -134,8 +134,8 @@ ExprNotAccess:
   | Expr LT    Expr                     { Prim2("<",  $1, $3) }
   | Expr GE    Expr                     { Prim2(">=", $1, $3) }
   | Expr LE    Expr                     { Prim2("<=", $1, $3) }
-  | INC Access                          { Preinc($2)          }
-  | DEC Access                          { Predec($2)          }
+  | INC Access                          { Preinc($2)          }    // Exercise 7.5
+  | DEC Access                          { Predec($2)          }    // Exercise 7.5
                         // | Expr SEQAND Expr                      { Andalso($1, $3 }  Oprindelig
                         // | Expr SEQOR  Expr                      { Orelse($1, $3  }  Oprindelig
   | Expr SEQAND Expr                    { Cond($1, $3, CSTI 0)} // Exercise 12.4

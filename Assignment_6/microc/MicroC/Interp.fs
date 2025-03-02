@@ -195,11 +195,11 @@ and eval e locEnv gloEnv store : int * store =
       let (i1, store1) as res = eval e1 locEnv gloEnv store
       if i1<>0 then res else eval e2 locEnv gloEnv store1
     | Call(f, es) -> callfun f es locEnv gloEnv store 
-    | Preinc acc -> 
-      let (address, store1) = access acc locEnv gloEnv store
+    | Preinc acc ->                                                    (* Exercise 7.4 *)
+      let (address, store1) = access acc locEnv gloEnv store           
       let value = (getSto store1 address) + 1
       (value, setSto store1 address value)
-    | Predec acc ->
+    | Predec acc ->                                                    (* Exercise 7.4 *)
       let (address, store1) = access acc locEnv gloEnv store
       let value = (getSto store1 address) - 1
       (value, setSto store1 address value)

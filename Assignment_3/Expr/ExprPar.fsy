@@ -12,9 +12,9 @@
 %token END IN LET
 %token LPAR RPAR
 %token EOF
-%token QMARK COLON
+%token QMARK COLON   (* Exercise 3.7 *)
 
-%left QMARK COLON
+%left QMARK COLON    (* Exercise 3.7 *)
 %left MINUS PLUS        /* lowest precedence  */
 %left TIMES             /* highest precedence */
 
@@ -36,5 +36,5 @@ Expr:
   | Expr TIMES Expr                     { Prim("*", $1, $3) }
   | Expr PLUS  Expr                     { Prim("+", $1, $3) }  
   | Expr MINUS Expr                     { Prim("-", $1, $3) } 
-  | Expr QMARK Expr COLON Expr          { If($1, $3, $5)}
+  | Expr QMARK Expr COLON Expr          { If($1, $3, $5)}     (* Exercise 3.7 *)
 ;
