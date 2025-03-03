@@ -77,12 +77,10 @@ let rec eval e (env : (string * int) list) : int =
         | "max" -> max i1 i2  (* Exercise 1.1. (iii) *)
         | "==" -> if i1 = i2 then 1 else 0 (* Exercise 1.1. (iii) *)
         | _ -> failwith "unknown primitive"
-    | If (e1, e2, e3) ->             (* Exercise 1.1 (v) Start *)
-        let i1 = eval e1 env            (* Evaluerer e1 i enviromentet env *)
-        let i2 = eval e2 env            (* Evaluerer e2 i enviromentet env *)
-        let i3 = eval e3 env            (* Evaluerer e3 i enviromentet env *)
-        if i1 <> 0 then i2 else i3;; (* Exercise 1.1 (v) Slut *)
-
+    | If (e1, e2, e3) ->    (* Exercise 1.1 (v) - Start *)
+        let i1 = eval e1 env
+        if i1 <> 0 then eval e2 env else eval e3 env;; (* Exercise 1.1 (v) - Slut *)
+  
 
 
 let e1v  = eval e1 env;;

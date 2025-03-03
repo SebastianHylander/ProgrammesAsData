@@ -214,11 +214,11 @@ let rec minus (xs, ys) =
 
 (* Find all variables that occur free in expression e *)
 
-let rec freevars e : string list =      
+let rec freevars e : string list =
     match e with
     | CstI i -> []
-    | Var x  -> [x]
-    | Let (vars, ebody) ->         // Exercise 2.2                    
+    | Var x  -> [x] //x er variablens navn
+    | Let (vars, ebody) -> // Exercise 2.2
         let rec freevars_let = fun (lst : (string*expr) list)  ->
                             match lst with
                             | [] -> []
@@ -258,7 +258,16 @@ let rec getindex vs x =
     | y::yr -> if x=y then 0 else 1 + getindex yr x;;
 
 (* Compiling from expr to texpr *)
-
+(* 
+let rec tcomp (e : expr) (cenv : string list) : texpr =
+    match e with
+    | CstI i -> TCstI i
+    | Var x  -> TVar (getindex cenv x)
+    | Let(x, erhs, ebody) -> 
+      let cenv1 = x :: cenv 
+      TLet(tcomp erhs cenv, tcomp ebody cenv1)
+    | Prim(ope, e1, e2) -> TPrim(ope, tcomp e1 cenv, tcomp e2 cenv);;
+*)
 let rec tcomp (e : expr) (cenv : string list) : texpr =
     match e with
     | CstI i -> TCstI i
